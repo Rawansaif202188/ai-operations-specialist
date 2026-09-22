@@ -36,7 +36,14 @@ top5("I think the answer is")
 top5("I think the answer is,")
 ```
 
-Write down what changed: _______________________
+Write down what changed: 
+
+### My Result
+
+Adding a comma changed the top-5 predictions and their probabilities. Without the comma, the most likely token was `yes` with a probability of `0.178`. After adding the comma, the most likely token became a space followed by a quote (`'`) with a probability of `0.087`.
+
+This shows that even a small change in the prompt can change the model's next-token predictions.
+
 
 <details>
 <summary>💡 What's happening</summary>
@@ -63,12 +70,17 @@ top5("My favorite color is")
 top5("The most important thing in life is")
 ```
 
-| Prompt | #1 token probability | Confident or uncertain? |
-|---|---|---|
-| The capital of France is | | |
-| The capital of that country is | | |
-| My favorite color is | | |
-| The most important thing in life is | | |
+| Prompt                              | #1 Token Probability | Confident or uncertain? |
+| ----------------------------------- | -------------------: | ----------------------- |
+| The capital of France is            |      0.174 (`Paris`) | Confident               |
+| The capital of that country is      |        0.048 (`the`) | Uncertain               |
+| My favorite color is                |       0.062 (`blue`) | Uncertain               |
+| The most important thing in life is |         0.432 (`to`) | Confident               |
+
+### My Observation
+
+I noticed that more specific prompts can have a higher probability for the next token, while broader prompts can have the probability spread across several possible tokens.
+
 
 <details>
 <summary>💡 Answer</summary>
@@ -94,9 +106,31 @@ top5("your_prompt_1")
 top5("your_prompt_2")
 ```
 
+```python
+top5("The student passed the")
+top5("The student failed the")
+```
+
+### My Result
+
+I used two prompts that differed by only one word:
+
+* `The student passed the`
+* `The student failed the`
+
+The predictions were different. For `passed`, the most likely token was `test` with a probability of `0.148`. For `failed`, the most likely token was `course` with a probability of `0.073`.
+
+This shows that changing even one word can change the model's next-token predictions and their probabilities.
+
 ## Discussion (2 minutes)
 
 If small wording changes can shift what a model predicts, what does that
 imply about how careful you need to be when writing prompts for a
 production system — and why might the same prompt behave differently
 across model versions?
+
+### My Answer
+
+Small changes in a prompt can change the model's predictions, so prompts for production systems need to be clear and carefully written.
+
+I also learned that the same prompt may behave differently across model versions because the models can have different training data, architectures, or settings. This means prompts should be tested when the model is changed or updated.
