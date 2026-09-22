@@ -39,6 +39,19 @@ Studied autoregressive generation, where the model predicts and appends one toke
 
 Used the Hugging Face `pipeline()` API to perform text generation and compared it with the lower-level generation process.
 
+## Personal Experiments
+
+To reinforce the concepts covered during the training, I modified the original inputs and prompts and ran additional experiments:
+
+* Tested GPT-2 tokenization with Arabic text and observed how Arabic is split into multiple tokens.
+* Examined the resulting token IDs and embedding vectors for Arabic text.
+* Tested next-token prediction using the prompt `Artificial intelligence is`.
+* Tested autoregressive text generation using the prompt `Artificial intelligence will`.
+* Used the Hugging Face `pipeline()` API with an AI-related prompt to generate text.
+* Compared the different stages of prediction and generation to understand how the model processes and generates text token by token.
+
+These experiments helped me connect the theoretical concepts with actual model behavior and better understand the difference between next-token prediction and autoregressive text generation.
+
 ## Key Learning
 
 The main workflow explored during this week was:
@@ -78,4 +91,7 @@ The practical exercises were completed as part of the AI Operations Specialist t
 
 ## Outcome
 
-By the end of this week, I gained a practical understanding of how a language model processes text and generates new text token by token, as well as how high-level APIs simplify this workflow.
+By the end of this week, I developed a practical understanding of how a language model processes text through tokenization, embeddings, prediction, and autoregressive generation.
+
+I also gained hands-on experience experimenting with Arabic and AI-related prompts and using both low-level model operations and the Hugging Face `pipeline()` API.
+
