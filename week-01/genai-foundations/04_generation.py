@@ -36,7 +36,7 @@ MODEL_NAME = "gpt2"
 NUM_TOKENS_TO_GENERATE = 12
 TEMPERATURE = 0.8  # >0 softens/sharpens the probability distribution before sampling
 
-prompt = "Once upon a time,"
+prompt = "Artificial intelligence will"
 
 print(f"Loading pretrained model and tokenizer for '{MODEL_NAME}'...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)

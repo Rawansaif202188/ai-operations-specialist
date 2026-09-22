@@ -21,7 +21,7 @@ from transformers import AutoTokenizer
 MODEL_NAME = "gpt2"
 EMBEDDING_DIM = 8  # kept small so the printed vectors stay readable
 
-text = "The cat sat on the mat."
+text = "الذكاء الاصطناعي يغير طريقة عملنا."
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokens = tokenizer.tokenize(text)

@@ -28,7 +28,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 MODEL_NAME = "gpt2-medium"
 TOP_K = 5
 
-prompt = "The capital of France is"
+prompt =  "The capital of kingdom of saudi arabia is"
 
 print(f"Loading pretrained model and tokenizer for '{MODEL_NAME}'...")
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)

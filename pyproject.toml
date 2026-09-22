@@ -1,0 +1,20 @@
+[project]
+name = "ai-operations-specialist"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Rawansaif202188", email = "Alsaifrawan88@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "torch>=2.14.0",
+    "transformers>=5.17.0",
+]
+
+[project.scripts]
+ai-operations-specialist = "ai_operations_specialist:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
