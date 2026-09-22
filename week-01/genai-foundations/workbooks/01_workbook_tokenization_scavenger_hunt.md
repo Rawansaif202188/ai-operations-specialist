@@ -30,15 +30,20 @@ show("misspeling")
 
 | Input | Your guess | Actual tokens |
 |---|---|---|
-| supercalifragilisticexpialidocious | | |
-| 2026 | | |
-| 🐍🔥 | | |
-| antidisestablishmentarianism | | |
-| don't | | |
-| misspeling | | |
+| supercalifragilisticexpialidocious | 34 | `['super', 'cal', 'if', 'rag', 'il', 'ist', 'ice', 'xp', 'ial', 'id', 'ocious']` |
+| 2026 | 4 | `['20', '26']` |
+| 🐍🔥 | 2 | `['ðŁ', 'Ĳ', 'į', 'ðŁ', 'Ķ', '¥']` |
+| antidisestablishmentarianism | 27 | `['ant', 'idis', 'establishment', 'arian', 'ism']` |
+| don't | 2 | `['don', "'t"]` |
+| misspeling | 2 | `['miss', 'p', 'eling']` |
+
 
 <details>
 <summary>💡 What's actually happening</summary>
+
+### My Observation
+
+The results showed that one word does not necessarily correspond to one token. Long words, numbers, and emojis can be split into multiple tokens.
 
 GPT-2 uses **byte-pair encoding (BPE)**: common whole words get one token,
 rare or long words get chopped into subword pieces, and unfamiliar
@@ -58,7 +63,7 @@ find one that splits into **3 or more** tokens.
 show("your_word_here")
 ```
 
-Write the word you found and its token split here: _______________________
+Write the word you found and its token split here: I_love_Ai -> ['I', '_', 'love', '_', 'A', 'i']
 
 ## Task 3: Same word, different case/spacing
 
@@ -69,6 +74,12 @@ show("hello")
 show("Hello")
 show(" hello")
 ```
+### My Result
+
+```text
+hello  → ['hello']
+Hello  → ['Hello']
+ hello → ['Ġhello']
 
 <details>
 <summary>💡 Answer</summary>
@@ -86,3 +97,7 @@ to the model, not the same word.
 If tokens (not words) are what you pay for and what count toward a
 model's context limit, why might that matter when writing prompts in
 languages other than English, or when working with code/numbers?
+
+### My Answer
+
+Different languages, code, and numbers can produce different numbers of tokens for the same amount of text. This can affect context limits, processing, and API costs.
