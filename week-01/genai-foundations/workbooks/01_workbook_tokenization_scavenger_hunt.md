@@ -74,13 +74,7 @@ show("hello")
 show("Hello")
 show(" hello")
 ```
-### My Result
-
-```text
-hello  → ['hello']
-Hello  → ['Hello']
- hello → ['Ġhello']
-
+##
 <details>
 <summary>💡 Answer</summary>
 
@@ -91,6 +85,15 @@ web text, where most words are preceded by a space). This is why
 to the model, not the same word.
 
 </details>
+### My Result
+
+I ran the three examples and got:
+
+```text
+hello  → ['hello']
+Hello  → ['Hello']
+ hello → ['Ġhello']
+```
 
 ## Discussion (2 minutes)
 
