@@ -43,6 +43,20 @@ print(text + tokenizer.decode(next_id))
 Run it 5 times in a row. Did you get the same word every time? Did any
 surprise you?
 
+### My Result
+
+I ran the sampling experiment 5 times.
+
+The generated texts were:
+
+1. `The cat sat on the ground`
+2. `The cat sat on the bucket`
+3. `The cat sat on the floor`
+4. `The cat sat on the sofa`
+5. `The cat sat on the bed`
+
+The results were different each time because sampling selects the next token based on the probability distribution instead of always choosing the most likely token.
+
 <details>
 <summary>💡 Answer</summary>
 
@@ -72,6 +86,16 @@ for _ in range(10):
 
 print(tokenizer.decode(generated[0]))
 ```
+
+### My Result
+
+I generated 10 tokens using sampling.
+
+The generated text was:
+
+`The cat sat on the ground. Cool tempered steel glowed in`
+
+The model generated the text by sampling one token at a time and feeding each new token back into the model.
 
 <details>
 <summary>💡 Answer</summary>
