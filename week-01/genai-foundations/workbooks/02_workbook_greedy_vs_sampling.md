@@ -115,3 +115,11 @@ dimension, hence `unsqueeze(0)`.
 Greedy decoding is deterministic; sampling is stochastic. Which would you
 want for a chatbot? For a customer-facing summarizer? Why might
 inconsistency be a problem in production?
+
+### My Answer
+
+For a chatbot, I would choose sampling because it can give different and more varied responses.
+
+For a customer-facing summarizer, I would prefer greedy decoding because I would want the output to be more consistent.
+
+In production, inconsistency can be a problem because the same input could give different results each time, which may confuse users and make the system less reliable.
