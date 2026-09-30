@@ -62,6 +62,10 @@ There is a difference in conversion rates between the two groups.
 
 ## 📈 Results
 
+### 📊 Conversion Rate Visualization
+
+![A/B Testing Conversion Results](Figure_1.png) 
+
 | Metric          | Control (A) | Treatment (B) |
 | --------------- | ----------: | ------------: |
 | Users           |     143,293 |       143,397 |
