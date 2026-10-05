@@ -181,7 +181,7 @@ Pro subscription required.
 
 When the user is on the Free plan, the server rejects the request with **403 Forbidden**.
 
-![403 Forbidden — Server denied access](image/403-forbidden.png)
+![403 Forbidden — Server denied access](image/403-forbidden.png.png)
 
 The request can also be inspected using:
 
@@ -229,7 +229,7 @@ Growth Rate: +18.4%
 
 After changing the server-side user plan to Pro, the same request is authorized and the protected data is returned.
 
-![Access Granted — Pro user authorized](image/access-granted.png)
+![Access Granted — Pro user authorized](image/access-granted.png.png)
 
 In the Network tab, the request now returns:
 
