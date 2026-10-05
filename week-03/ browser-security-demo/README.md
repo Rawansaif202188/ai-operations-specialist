@@ -161,7 +161,7 @@ current_user = {
 }
 ```
 
-click:
+Click:
 
 ```text
 Request Secure Pro Data
@@ -181,7 +181,7 @@ Pro subscription required.
 
 When the user is on the Free plan, the server rejects the request with **403 Forbidden**.
 
-![403 Forbidden — Server denied access](assets/403-forbidden.png)
+![403 Forbidden — Server denied access](image/403-forbidden.png)
 
 The request can also be inspected using:
 
@@ -212,4 +212,274 @@ current_user = {
 }
 ```
 
-Save the file and request the secure data again
+Save the file and request the secure data again.
+
+The server now authorizes the request and returns:
+
+```text
+✅ ACCESS GRANTED
+
+Advanced Analytics
+
+Monthly Revenue: $48,250
+Growth Rate: +18.4%
+```
+
+### Demo Result — Pro User
+
+After changing the server-side user plan to Pro, the same request is authorized and the protected data is returned.
+
+![Access Granted — Pro user authorized](image/access-granted.png)
+
+In the Network tab, the request now returns:
+
+```text
+Status Code: 200 OK
+```
+
+---
+
+## Request Flow
+
+### Free User
+
+```text
+Browser
+   │
+   │ GET /api/pro-data
+   ▼
+Flask Server
+   │
+   │ Check user plan
+   ▼
+Is user Pro?
+   │
+   NO
+   │
+   ▼
+403 Forbidden ❌
+```
+
+### Pro User
+
+```text
+Browser
+   │
+   │ GET /api/pro-data
+   ▼
+Flask Server
+   │
+   │ Check user plan
+   ▼
+Is user Pro?
+   │
+   YES
+   │
+   ▼
+200 OK ✅
+   │
+   ▼
+Protected Data
+```
+
+---
+
+## Insecure vs Secure
+
+### ❌ Insecure
+
+```text
+Server
+   ↓
+Sends sensitive data
+   ↓
+Browser
+   ↓
+CSS hides the data
+   ↓
+User modifies HTML/CSS
+   ↓
+Data becomes visible
+```
+
+The problem is that the sensitive data was already sent to the browser.
+
+### ✅ Secure
+
+```text
+Browser
+   ↓
+Requests protected data
+   ↓
+Server checks authorization
+   ↓
+FREE ─────→ 403 Forbidden
+
+PRO ──────→ 200 OK
+             ↓
+          Pro Data
+```
+
+The server decides whether the data should be sent.
+
+---
+
+## Project Structure
+
+```text
+browser-security-demo/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── image/
+│   ├── 403-forbidden.png
+│   └── access-granted.png
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    ├── style.css
+    └── script.js
+```
+
+### `app.py`
+
+Runs the Flask server and contains the server-side authorization check.
+
+### `templates/index.html`
+
+Contains the application interface and the intentionally insecure client-side example.
+
+### `static/style.css`
+
+Contains the application styling and the `.hidden` CSS class used in the insecure demonstration.
+
+### `static/script.js`
+
+Sends the request to the protected Flask API and displays the server response.
+
+### `image/`
+
+Contains screenshots showing the two server-side authorization results:
+
+- `403-forbidden.png` — Free user denied by the server.
+- `access-granted.png` — Pro user successfully authorized.
+
+---
+
+# Running the Project
+
+## 1. Create a Virtual Environment
+
+Windows:
+
+```bash
+python -m venv .venv
+```
+
+## 2. Activate the Environment
+
+PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+## 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## 4. Start Flask
+
+```bash
+python app.py
+```
+
+Flask should display a local address similar to:
+
+```text
+http://127.0.0.1:5000
+```
+
+Open this address in the browser.
+
+---
+
+# Live Demo Steps
+
+For a presentation, the demo can be performed in this order:
+
+1. Start with the user configured as `free`.
+2. Show that Advanced Analytics appears locked.
+3. Open **DevTools → Elements**.
+4. Search for `pro-content`.
+5. Remove the `hidden` class.
+6. Show that the supposedly locked content becomes visible.
+7. Explain that the feature was **hidden, not protected**.
+8. Click **Request Secure Pro Data**.
+9. Show the server response: `403 Forbidden`.
+10. Open **DevTools → Network** and verify the `403` response.
+11. Change the server-side demo plan from `free` to `pro`.
+12. Request the data again.
+13. Show `200 OK` and **Access Granted**.
+
+---
+
+## Important Security Lesson
+
+Client-side controls are useful for the user interface, but they should not be treated as a security boundary.
+
+Important decisions such as:
+
+- User permissions
+- Feature access
+- Prices
+- Sensitive form values
+- Protected data
+- Administrative actions
+
+should be validated or authorized by the server when appropriate.
+
+> **The client can suggest. The server must decide.**
+
+---
+
+## Educational Simplification
+
+This project intentionally uses a simplified server-side user:
+
+```python
+current_user = {
+    "name": "Rawan",
+    "plan": "free"
+}
+```
+
+This is used only to make the authorization concept easy to demonstrate.
+
+A production application would normally use a real authentication and authorization system such as authenticated sessions, secure tokens, user roles, and database-backed permissions.
+
+---
+
+## Technologies Used
+
+- Python
+- Flask
+- HTML
+- CSS
+- JavaScript
+- Browser DevTools
+- HTTP status codes
+
+---
+
+## Disclaimer
+
+This project is an educational security demonstration using local sample data.
+
+It is designed to demonstrate secure application development concepts and should only be tested in environments you own or are authorized to use.
