@@ -1,1 +1,326 @@
+<!DOCTYPE html>
 
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        SecureFlow — Browser Security Demo
+    </title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- ===================================== -->
+    <!-- NAVIGATION -->
+    <!-- ===================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            SecureFlow
+        </div>
+
+
+        <div class="user-info">
+
+            <span>
+                Rawan
+            </span>
+
+            <span class="plan-badge">
+                FREE PLAN
+            </span>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ===================================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ===================================== -->
+
+    <main class="container">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="welcome">
+
+            <p class="label">
+                DASHBOARD
+            </p>
+
+
+            <h1>
+                Welcome back, Rawan 👋
+            </h1>
+
+
+            <p class="subtitle">
+                Browser Security Demo — Team 2
+            </p>
+
+        </section>
+
+
+
+        <!-- ================================= -->
+        <!-- FEATURE CARDS -->
+        <!-- ================================= -->
+
+        <section class="cards">
+
+
+            <!-- BASIC FEATURE -->
+
+            <div class="card">
+
+                <div class="icon">
+                    📊
+                </div>
+
+
+                <h2>
+                    Basic Analytics
+                </h2>
+
+
+                <p>
+                    View basic statistics available
+                    to all users.
+                </p>
+
+
+                <button class="normal-button">
+                    View Analytics
+                </button>
+
+            </div>
+
+
+
+            <!-- ================================= -->
+            <!-- PRO FEATURE -->
+            <!-- ================================= -->
+
+            <div class="card pro-card">
+
+
+                <div class="pro-header">
+
+                    <div class="icon">
+                        🔒
+                    </div>
+
+
+                    <span class="pro-badge">
+                        PRO
+                    </span>
+
+                </div>
+
+
+
+                <h2>
+                    Advanced Analytics
+                </h2>
+
+
+                <p>
+                    Advanced reports and sensitive
+                    business insights.
+                </p>
+
+
+
+                <!-- ================================= -->
+                <!-- INSECURE EXAMPLE -->
+                <!-- ================================= -->
+
+                <div class="demo-section">
+
+
+                    <p class="demo-title insecure-title">
+                        ❌ CLIENT-SIDE ONLY
+                    </p>
+
+
+                    <p class="demo-description">
+                        This feature is hidden in the browser.
+                    </p>
+
+
+
+                    <div id="locked-content">
+
+                        <p class="locked-message">
+
+                            🔒 This feature requires
+                            a Pro subscription.
+
+                        </p>
+
+
+                        <button class="upgrade-button">
+                            Upgrade to Pro
+                        </button>
+
+                    </div>
+
+
+
+                    <!--
+                    SECURITY PROBLEM:
+
+                    The sensitive data is already
+                    inside the browser.
+
+                    CSS is only hiding it.
+
+                    A user can remove the "hidden"
+                    class using DevTools.
+                -->
+
+                    <div id="pro-content" class="hidden">
+
+
+                        <div class="secret-data">
+
+                            <p class="unlocked-title">
+                                💎 PRO FEATURE UNLOCKED
+                            </p>
+
+
+                            <h3>
+                                Revenue Insights
+                            </h3>
+
+
+                            <p>
+                                Monthly Revenue:
+                                $48,250
+                            </p>
+
+
+                            <p>
+                                Growth Rate:
+                                +18.4%
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DIVIDER -->
+
+                <hr class="divider">
+
+
+
+                <!-- ================================= -->
+                <!-- SECURE EXAMPLE -->
+                <!-- ================================= -->
+
+                <div class="demo-section secure-demo">
+
+
+                    <p class="demo-title secure-title">
+                        🛡️ SERVER-PROTECTED
+                    </p>
+
+
+                    <p class="demo-description">
+                        The server must authorize
+                        access before sending the data.
+                    </p>
+
+
+                    <button id="secure-button" class="secure-button">
+
+                        Request Secure Pro Data
+
+                    </button>
+
+
+                    <!-- Server response appears here -->
+
+                    <div id="secure-result">
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================================= -->
+        <!-- SECURITY QUESTION -->
+        <!-- ================================= -->
+
+        <section class="security-note">
+
+
+            <span class="shield">
+                🛡️
+            </span>
+
+
+            <div>
+
+                <strong>
+                    Security Question
+                </strong>
+
+
+                <p>
+
+                    Which feature is only hidden,
+                    and which one is actually protected?
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ===================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ===================================== -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+
+</html>
